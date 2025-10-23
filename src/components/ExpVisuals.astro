@@ -3,18 +3,47 @@ import { Image } from "astro:assets";
 import NINETYFIVEImage from "@assets/images/ninetyFivePc.png";
 import NINETYImage from "@assets/images/ninetyPc.png";
 import EIGHTYFIVEImage from "@assets/images/eightyFivePc.png";
+import expData from "@data/experience.json";
+
+const images = [EIGHTYFIVEImage, NINETYFIVEImage, NINETYImage];
 ---
 
 <div class="grid1_3">
-  <div class="stat-holder">
-    <div class="img-holder">
-      <img src={EIGHTYFIVEImage} alt="" />
-    </div>
-    <p>Consistency</p>
-  </div>
+  {
+    expData.stats.map((stat, i) => (
+      <div class="stat-holder">
+        <div class="img-holder">
+          <Image src={images[i]} alt={stat.label} />
+          <h2>{stat.value}</h2>
+        </div>
+        <h4>{stat.label}</h4>
+      </div>
+    ))
+  }
 </div>
 
 <style>
   .grid1_3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+  }
+  .img-holder {
+    display: grid;
+    place-items: center;
+
+    > * {
+      grid-area: 1/1;
+    }
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .stat-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 </style>

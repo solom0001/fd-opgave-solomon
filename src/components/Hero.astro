@@ -14,9 +14,7 @@ import LinkButton from "./LinkButton.astro";
   <Image src={CEOImage} alt="CEO" class="hero-img" />
   <div class="cover"></div>
 
-  <!-- <div class="services">
-    <Services />
-  </div> -->
+  <Services />
 </section>
 
 <style>
@@ -65,6 +63,15 @@ import LinkButton from "./LinkButton.astro";
 
     p {
       max-width: 45ch;
+    }
+    :nth-child(4) {
+      grid-column: se;
+      z-index: 5;
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      min-width: 0;
+      transform: translate(-50%, 0);
     }
   }
 </style>

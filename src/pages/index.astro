@@ -24,6 +24,8 @@ import AONEImage from "@assets/images/areaPhoto1.png";
 import ATWOImage from "@assets/images/areaPhoto2.png";
 import ATHREEImage from "@assets/images/ladyInSeat.png";
 
+import ExpVisuals from "@components/ExpVisuals.astro";
+
 //----newsLetter---
 import NewsLetter from "@components/NewsLetter.astro";
 ---
@@ -34,7 +36,7 @@ import NewsLetter from "@components/NewsLetter.astro";
 
   <!--sec1/////////////// -->
 
-  <SectionOne services={Services} color="white">
+  <SectionOne services={Services} color="white" uniquifierOv="teamSec" uniqImg1="teamImg">
     <ImageContainer img1={TEAMPHOTOImage} />
     <TextSection subTitle="We'll work with you" maxWidth="600px" title="What to Expect" uniquifier2="sec1" text="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.">
       <div><DynamicIcon name="checkmark" class="icon" /><p>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</p></div>
@@ -52,8 +54,9 @@ import NewsLetter from "@components/NewsLetter.astro";
   </CardHolderSecOne>
 
   <!--yellowSec/////////////// -->
-  <SectionOne color="yellow">
+  <SectionOne color="yellow" uniquifierUn="secYellow">
     <TextSection subTitle="experience" title="More than 25 years of experience" maxWidth="300px" text="3000+ our clients are insured around the World." />
+    <ExpVisuals />
   </SectionOne>
 
   <!--darkCardSec/////////////// -->
@@ -78,6 +81,25 @@ import NewsLetter from "@components/NewsLetter.astro";
 
 <style is:global>
   /*-----TextSection1 */
+
+  .teamSec {
+    margin-top: 15%;
+    position: relative;
+    &::before {
+      content: "";
+      width: 150px;
+      aspect-ratio: 1/1;
+      position: absolute;
+      top: 105px;
+      left: 152px;
+      border-radius: 15px;
+      z-index: 0;
+      background-color: var(--primary-green);
+    }
+  }
+
+  .teamImg {
+  }
   .sec1 {
     > * {
       display: grid;
@@ -102,6 +124,9 @@ import NewsLetter from "@components/NewsLetter.astro";
     }
   }
 
+  #secYellow {
+    grid-template-columns: 1.5fr 2fr;
+  }
   #sec2-5 {
     grid-template-columns: 1.5fr 2fr;
     > :nth-child(1) {

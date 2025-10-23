@@ -2,7 +2,6 @@
 //@ts-nocheck
 import servicesData from "@data/services.json";
 import LinkButton from "./LinkButton.astro";
-console.log(servicesData);
 ---
 
 <ul>
@@ -29,10 +28,12 @@ console.log(servicesData);
     li {
       display: grid;
       grid-template-rows: subgrid;
-      max-width: 350px;
+      /* max-width: 350px; */
+      min-width: 370px;
       align-self: center;
       grid-row: span 3;
-      background-color: rgba(24, 24, 24, 0.551);
+      background-color: rgba(24, 24, 24, 0.747);
+      backdrop-filter: blur(6px);
       color: var(--secondary-white);
       border-radius: 1rem;
       padding: 2rlh;

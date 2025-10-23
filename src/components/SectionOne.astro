@@ -6,17 +6,10 @@
 // import ImageContainer from "./ImageContainer.astro";
 // import TextSection from "./TextSection.astro";
 const { services = null, color, uniquifierOv, uniquifierUn } = Astro.props;
+console.log("services prop:", services);
 ---
 
 <article data-color={color} class={uniquifierOv}>
-  ,
-  {
-    services && (
-      <div class="services">
-        <component is={services} />
-      </div>
-    )
-  }
   <!-- {services && <div class="services">{services}</div>} -->
   <div class="grid1" id={uniquifierUn}>
     <slot />
