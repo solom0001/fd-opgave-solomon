@@ -1,8 +1,143 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
+
+import employees from "@data/employees.json";
+import DynamicImage from "@components/helpers/DynamicImage.astro";
+import DynamicIcon from "@components/helpers/DynamicIcon.astro";
+import Header from "@components/Header.astro";
+//----imgsec1----
+import SectionOne from "@components/SectionOne.astro";
+import Services from "@components/Services.astro";
+import TextSection from "@components/TextSection.astro";
+import ImageContainer from "@components/ImageContainer.astro";
+import TEAMPHOTOImage from "@assets/images/teamPhoto.jpg";
+import Checkmark from "@icons/checkmark.svg";
+//------cardSections-----
+import CardHolderSecOne from "@components/CardHolderSecOne.astro";
+import LinkButton from "../components/LinkButton.astro";
+import FinancialCards from "../components/cards/FinancialCards.astro";
+import finProjections from "@data/financialProjections.json";
+import cValues from "@data/coreValues.json";
+//----imgsec1----
+import AONEImage from "@assets/images/areaPhoto1.png";
+import ATWOImage from "@assets/images/areaPhoto2.png";
+import ATHREEImage from "@assets/images/ladyInSeat.png";
+
+//----newsLetter---
+import NewsLetter from "@components/NewsLetter.astro";
 ---
 
 <Layout>
+  <Header />
   <Hero />
+
+  <!--sec1/////////////// -->
+
+  <SectionOne services={Services} color="white">
+    <ImageContainer img1={TEAMPHOTOImage} />
+    <TextSection subTitle="We'll work with you" maxWidth="600px" title="What to Expect" uniquifier2="sec1" text="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.">
+      <div><DynamicIcon name="checkmark" class="icon" /><p>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</p></div>
+      <div><DynamicIcon name="checkmark" class="icon" /><p>Identify opportunities to optimize processes and implement impactful solutions with measurable results.</p></div>
+    </TextSection>
+  </SectionOne>
+
+  <!--cardSec1/////////////// -->
+
+  <CardHolderSecOne color="grey">
+    <TextSection subTitle="" title="Financial Projections" uniquifier="cardDiv1" uniquifier2="cardSubDiv1" text="Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.">
+      <LinkButton color="black" link="#" title="Get in touch" uniquifier="CHSOBut" />
+    </TextSection>
+    <FinancialCards data={finProjections} />
+  </CardHolderSecOne>
+
+  <!--yellowSec/////////////// -->
+  <SectionOne color="yellow">
+    <TextSection subTitle="experience" title="More than 25 years of experience" maxWidth="300px" text="3000+ our clients are insured around the World." />
+  </SectionOne>
+
+  <!--darkCardSec/////////////// -->
+  <CardHolderSecOne color="dark">
+    <TextSection subTitle="growing with our clients" title="Our core values & principles" uniquifier="cardDiv1" uniquifier2="cardSubDiv1" text="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.">
+      <LinkButton color="white" link="#" title="Get in touch" uniquifier="CHSOBut" />
+    </TextSection>
+    <FinancialCards data={cValues} />
+  </CardHolderSecOne>
+
+  <SectionOne color="white" uniquifierUn="sec2-5" uniquifierOv="sec2">
+    <ImageContainer img1={AONEImage} img2={ATHREEImage} img3={ATWOImage} />
+    <TextSection subTitle="process" maxWidth="600px" title="Contact Us. It's Easy." uniquifier2="sec1" text="Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.">
+      <div class="sec2Icons"><DynamicIcon name="phone" class="phone" /><div><p>Call Today</p><h4>+1800 100 900</h4></div></div>
+      <div class="sec2Icons"><DynamicIcon name="clock" class="clock" /><div><p>Monday To Friday.</p><h4>9AM-5PM</h4></div></div>
+      <div class="sec2Icons"><DynamicIcon name="pin" class="pin" /><div><p>USA Office</p><h4>195 Devonshire St Boston, MA 02110</h4></div></div>
+    </TextSection>
+  </SectionOne>
+
+  <NewsLetter />
 </Layout>
+
+<style is:global>
+  /*-----TextSection1 */
+  .sec1 {
+    > * {
+      display: grid;
+      grid-template-columns: 0.5fr 5fr;
+      gap: 20px;
+    }
+
+    .icon {
+      color: var(--primary-green);
+    }
+  }
+
+  .cardDiv1 {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 35px;
+
+    .cardSubDiv1 {
+      display: grid;
+      justify-items: end;
+      align-items: end;
+    }
+  }
+
+  #sec2-5 {
+    grid-template-columns: 1.5fr 2fr;
+    > :nth-child(1) {
+      order: 2;
+    }
+    > :nth-child(2) {
+      order: 1;
+    }
+    .phone {
+      width: 40px;
+      padding: 8px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background-color: #ffecbb;
+      color: #deaa27;
+    }
+    .clock {
+      width: 40px;
+      padding: 8px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background-color: #a4eda4;
+      color: #4eaf4e;
+    }
+    .pin {
+      width: 40px;
+      padding: 8px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background-color: var(--secondary-grey);
+      color: var(--primary-dark);
+    }
+
+    .sec2Icons {
+      display: grid;
+      margin-top: 15px;
+    }
+  }
+</style>

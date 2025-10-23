@@ -1,0 +1,58 @@
+---
+import DynamicIcon from "@components/helpers/DynamicIcon.astro";
+
+const { data } = Astro.props;
+const cardsData = data.values ?? data;
+---
+
+<div class="grid1_4">
+  {
+    cardsData.map((value) => (
+      <div class="card">
+        <DynamicIcon name={value.icon} class="icon" />
+        <h4>{value.title}</h4>
+        <p>{value.description}</p>
+
+        {/* {value.link && <a href={value.link.url}>{value.link.text}</a>} */}
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  .grid1_4 {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: [icon-start]1fr [icon-end title-start] 0.5fr [title-end p-start] 3fr [p-end];
+    gap: 25px;
+    min-width: 0;
+  }
+  .card {
+    min-width: 0px;
+    display: grid;
+    gap: 5px;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    padding: 1.5rlh;
+    background-color: var(--secondary-greyer);
+    color: var(--primary-dark);
+    border-radius: 15px;
+    transition: transform 0.4s ease;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--primary-dark);
+      color: var(--secondary-white);
+      transform: scaleY(1.15) scaleX(1.15);
+
+      .icon {
+        color: var(--primary-yellow);
+      }
+    }
+  }
+</style>

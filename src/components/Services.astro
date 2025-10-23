@@ -1,6 +1,7 @@
 ---
 //@ts-nocheck
 import servicesData from "@data/services.json";
+import LinkButton from "./LinkButton.astro";
 console.log(servicesData);
 ---
 
@@ -10,7 +11,8 @@ console.log(servicesData);
       <li>
         <h2>{service.title}</h2>
         <p>{service.description}</p>
-        <a href="#0">{service.buttonText}</a>
+        <LinkButton color="black" title={service.buttonText} link="#0" />
+        {/* <a href="#0">{service.buttonText}</a> */}
       </li>
     ))
   }
@@ -18,7 +20,22 @@ console.log(servicesData);
 
 <style>
   @layer components {
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0;
+      gap: 10px;
+    }
     li {
+      display: grid;
+      grid-template-rows: subgrid;
+      max-width: 350px;
+      align-self: center;
+      grid-row: span 3;
+      background-color: rgba(24, 24, 24, 0.551);
+      color: var(--secondary-white);
+      border-radius: 1rem;
+      padding: 2rlh;
     }
   }
 </style>

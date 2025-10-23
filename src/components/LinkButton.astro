@@ -1,0 +1,48 @@
+---
+const { color, link, title, uniquifier } = Astro.props;
+---
+
+<a data-color=`${color}` href=`${link}` id={uniquifier}>{title}</a>
+
+<style>
+  [data-color="black"] {
+    --body-col: var(--primary-dark);
+    --col: var(--secondary-white);
+
+    &:hover {
+      --body-col: var(--primary-yellow);
+    }
+  }
+  [data-color="white"] {
+    --body-col: var(--secondary-white);
+    --col: var(--primary-dark);
+
+    &:hover {
+      --body-col: var(--primary-yellow);
+    }
+  }
+  [data-color="yellow"] {
+    --body-col: var(--primary-yellow);
+    --col: var(--primary-dark);
+
+    &:hover {
+      --body-col: var(--secondary-white);
+    }
+  }
+
+  a {
+    text-decoration: none;
+    max-width: fit-content;
+    max-height: 3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    background-color: var(--body-col);
+    color: var(--col);
+    transition: transform 0.2s ease;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+</style>

@@ -8,6 +8,9 @@ import "@styles/main.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
     <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
     <style is:inline>
       @layer reset, global, components, overrides;
@@ -18,4 +21,15 @@ import "@styles/main.css";
   </body>
 </html>
 
-<style></style>
+<style>
+  body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1200px) minmax(0, 1fr);
+    gap: 0;
+    height: auto;
+
+    > * {
+      grid-column: 2;
+    }
+  }
+</style>

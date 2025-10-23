@@ -1,0 +1,48 @@
+---
+import SectionOne from "./SectionOne.astro";
+import TextSection from "./TextSection.astro";
+import LinkButton from "./LinkButton.astro";
+import FinancialCards from "./cards/FinancialCards.astro";
+import finProjections from "@data/financialProjections.json";
+
+const { color } = Astro.props;
+---
+
+<article data-color={color}>
+  <slot />
+</article>
+
+<style>
+  [data-color="grey"] {
+    --cardBg-col: var(--secondary-grey);
+    --txt-color: var(--primary-dark);
+  }
+  [data-color="dark"] {
+    --cardBg-col: var(--primary-dark);
+    --txt-color: var(--secondary-white);
+  }
+  [data-color="yellow"] {
+    --cardBg-col: var(--primary-yellow);
+    --txt-color: var(--primary-dark);
+  }
+  article {
+    height: fit-content;
+    min-height: 0;
+
+    background-color: var(--cardBg-col);
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+
+    > * {
+      grid-column: 2;
+      color: var(--txt-color);
+    }
+  }
+
+  /* :global(#CHSOBut) {
+    display: flex;
+    justify-self: end;
+    align-self: end;
+  } */
+</style>

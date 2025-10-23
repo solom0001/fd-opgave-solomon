@@ -1,0 +1,70 @@
+---
+// import Services from "./Services.astro";
+// import { Image } from "astro:assets";
+// import DynamicIcon from "./helpers/DynamicIcon.astro";
+
+// import ImageContainer from "./ImageContainer.astro";
+// import TextSection from "./TextSection.astro";
+const { services = null, color, uniquifierOv, uniquifierUn } = Astro.props;
+---
+
+<article data-color={color} class={uniquifierOv}>
+  ,
+  {
+    services && (
+      <div class="services">
+        <component is={services} />
+      </div>
+    )
+  }
+  <!-- {services && <div class="services">{services}</div>} -->
+  <div class="grid1" id={uniquifierUn}>
+    <slot />
+  </div>
+</article>
+<style>
+  [data-color="yellow"] {
+    --bg-color: var(--primary-yellow);
+    --txt-color: var(--primary-dark);
+  }
+  [data-color="white"] {
+    --bg-color: var(--secondary-white);
+    --txt-color: var(--primary-dark);
+  }
+
+  article {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+
+    > * {
+      grid-column: 2;
+    }
+    background-color: var(--bg-color);
+    :has(.services) {
+      .services {
+        margin-top: -45px;
+        /* z-index: 2; */
+      }
+    }
+  }
+
+  .grid1 {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    gap: 35px;
+  }
+
+  /* .list-p {
+    > * {
+      display: grid;
+      grid-template-columns: 0.5fr 5fr;
+      gap: 0;
+    }
+  }
+  .icon {
+    color: var(--primary-green);
+    max-width: 20px;
+    aspect-ratio: 1/1;
+  } */
+</style>

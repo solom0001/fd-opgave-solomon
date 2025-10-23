@@ -1,0 +1,56 @@
+---
+//import button for Nav
+import LinkButton from "./LinkButton.astro";
+---
+
+<div class="nav-wrapper">
+  <nav>
+    <a href=""><h3>AskExperts</h3></a>
+    <ul>
+      <li>Home</li>
+      <li>Case Study</li>
+      <li>Team</li>
+      <li>About</li>
+    </ul>
+    <LinkButton color="yellow" title="Login" link="google.com" />
+  </nav>
+</div>
+<style>
+  .nav-wrapper {
+    display: grid;
+    grid-column: 1/-1;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1200px) minmax(0, 1fr);
+    background-color: var(--primary-dark);
+
+    > * {
+      grid-column: 2;
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rlh 0;
+    max-height: 60px;
+    align-items: center;
+    color: var(--secondary-white);
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    padding: 0 0.5rlh;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+</style>

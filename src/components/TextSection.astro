@@ -1,0 +1,53 @@
+---
+const { subTitle, title, text, maxWidth, uniquifier, uniquifier2 } = Astro.props;
+const { data } = Astro.props;
+---
+
+<article class={uniquifier} style={`max-width: ${maxWidth};`}>
+  <div>
+    <h3>{subTitle}</h3>
+    <h2>{title}</h2>
+    <p>{text}</p>
+  </div>
+  <div class={uniquifier2}>
+    <slot />
+  </div>
+</article>
+
+<style>
+  article {
+    > * > * {
+      display: flex;
+    }
+
+    div > * {
+      margin-block-start: var(--flow-space, 0.5rlh);
+    }
+  }
+
+  h2 {
+    --flow-space: 1.5rlh;
+  }
+
+  div {
+    --flow-space: 0rlh;
+  }
+
+  h3 {
+    --flow-space: 0rlh;
+  }
+  /* * + h3 {
+    --flow-space: 0.25rlh;
+  } */
+
+  p {
+    --flow-space: 0.5rlh;
+  }
+  h2 + p {
+    --flow-space: 0.5rlh;
+  }
+
+  * + h2 {
+    --flow-space: 0.5rlh;
+  }
+</style>
